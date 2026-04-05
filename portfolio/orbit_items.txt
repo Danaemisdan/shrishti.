@@ -1,0 +1,60 @@
+                    <div class="orbit-item" data-vid="assets/videos/showreel.mp4" data-title="NBA 3D Vision Pro" data-num="01" data-url="https://80.lv/articles/watch-nba-in-3d-with-apple-vision-pro">
+                        <video src="assets/videos/showreel.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project2.mp4" data-title="Commercial Execution" data-num="02" data-url="https://www.facebook.com/watch/?v=287961794320835">
+                        <video src="assets/videos/project2.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project3.mp4" data-title="Centipede VR" data-num="03" data-url="https://www.meta.com/en-gb/experiences/centipede-vr/26292894803687512/">
+                        <video src="assets/videos/project3.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project4.mp4" data-title="Dice Art Films" data-num="04" data-url="https://www.youtube.com/watch?v=iw4KL33SaMs">
+                        <video src="assets/videos/project4.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project5.mp4" data-title="Cinematic Reel" data-num="05" data-url="https://www.youtube.com/watch?v=ZpG_4BRPnqw">
+                        <video src="assets/videos/project5.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project6.mp4" data-title="Product Launch" data-num="06" data-url="https://www.youtube.com/watch?v=-CBJS0dQVBs">
+                        <video src="assets/videos/project6.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/showreel.mp4" data-title="Visual Design" data-num="07" data-url="https://www.youtube.com/watch?v=ewX8MNliLkk">
+                        <video src="assets/videos/showreel.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project2.mp4" data-title="Brand Identity" data-num="08" data-url="https://www.youtube.com/watch?v=kiPAS8CSqFc">
+                        <video src="assets/videos/project2.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project3.mp4" data-title="VirtualeX Jewels" data-num="09" data-url="https://www.youtube.com/watch?v=MEJkIOKLiJ8">
+                        <video src="assets/videos/project3.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project4.mp4" data-title="Immersive Ex" data-num="10" data-url="https://www.youtube.com/watch?v=F35fUtsVgzo">
+                        <video src="assets/videos/project4.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project5.mp4" data-title="HomeXengine" data-num="11" data-url="https://www.youtube.com/watch?v=Qqi1GSEr0f8">
+                        <video src="assets/videos/project5.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project6.mp4" data-title="Motion Graphics" data-num="12" data-url="https://www.youtube.com/watch?v=-6jtEOudg3c">
+                        <video src="assets/videos/project6.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/showreel.mp4" data-title="Highway Haul" data-num="13" data-url="https://www.youtube.com/watch?v=VOq6DCFP8-I">
+                        <video src="assets/videos/showreel.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project2.mp4" data-title="Final Advert" data-num="14" data-url="https://www.youtube.com/watch?v=5IVeR-W79e4">
+                        <video src="assets/videos/project2.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project3.mp4" data-title="Creative Direction" data-num="15" data-url="https://www.youtube.com/watch?v=UF2-_PcSKz4">
+                        <video src="assets/videos/project3.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project4.mp4" data-title="MMA Cage Conquest" data-num="16" data-url="https://www.meta.com/en-gb/experiences/mma-cage-conquest/7240758719367247/">
+                        <video src="assets/videos/project4.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project5.mp4" data-title="Wix Project Alpha" data-num="17" data-url="https://shrishtisoni3030.wixstudio.com/my-site-12/blank-2-2-3-1-1-1?rc=test-site">
+                        <video src="assets/videos/project5.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project6.mp4" data-title="VirtualeX Academy" data-num="18" data-url="https://shrishtisoni3030.wixstudio.com/virtualexacademy">
+                        <video src="assets/videos/project6.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/showreel.mp4" data-title="Vozbun Neetocal" data-num="19" data-url="https://youtu.be/P2fypYLw4uk">
+                        <video src="assets/videos/showreel.mp4" muted playsinline preload="metadata"></video>
+                    </div>
+                    <div class="orbit-item" data-vid="assets/videos/project2.mp4" data-title="Editorial Lookbook" data-num="20" data-url="https://youtu.be/tQ-e_-NHz8w">
+                        <video src="assets/videos/project2.mp4" muted playsinline preload="metadata"></video>
+                    </div>

@@ -1,0 +1,616 @@
+:root {
+    /* Dynamic Theme Colors */
+    --theme-brand: #FAFAFA;  /* Clean white for hero */
+    --theme-dark: #121212;   /* Smooth charcoal for other sections */
+    --theme-accent: #A78BFA; /* Lavender */
+    --splash-bg: #0a0a0a;    /* Black splash */
+    
+    --text-dark: #111111;
+    --text-light: #FCFCFC;
+    --text-muted: #8E8A85;
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Outfit', sans-serif;
+    
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Basics */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: initial; 
+}
+
+body {
+    /* Base color starts as brand */
+    background-color: var(--theme-brand);
+    color: var(--text-dark);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    cursor: none;
+    transition: background-color 0.8s ease, color 0.8s ease;
+}
+
+/* Thematic Color Classes tied to data-color */
+/* Hero section is WHITE — everything else is dark */
+body[data-current-theme="brand"] { background-color: var(--theme-brand); color: var(--text-dark); }
+body[data-current-theme="dark"] { background-color: var(--theme-dark); color: var(--text-light); }
+body[data-current-theme="accent"] { background-color: #1a1a2e; color: var(--text-light); }
+
+::selection {
+    background: var(--text-dark);
+    color: #fff;
+}
+body[data-current-theme="dark"] ::selection {
+    background: var(--text-light);
+    color: #000;
+}
+
+a { color: inherit; text-decoration: none; cursor: none; }
+.mt-2 { margin-top: 2rem; }
+.mt-4 { margin-top: 4rem; }
+.italic { font-style: italic; font-family: var(--font-heading); }
+.highlight { color: var(--theme-accent); } /* Lavender accent */
+
+/* Custom Cursor default */
+.cursor {
+    width: 20px;
+    height: 20px;
+    background-color: currentColor;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s var(--ease-out), height 0.3s var(--ease-out), background-color 0.3s var(--ease-out), filter 0.3s;
+    mix-blend-mode: difference;
+}
+
+.cursor.hovered {
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    border: 1px solid #fff;
+    mix-blend-mode: normal;
+    backdrop-filter: invert(1);
+}
+
+.progress-bar {
+    position: fixed; top: 0; left: 0;
+    height: 4px; background: currentColor;
+    width: 0%; z-index: 999;
+    mix-blend-mode: difference;
+}
+
+/* Background Distortion Overlay */
+.noise-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.04;
+    background: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+}
+
+/* Splash Screen — BLACK background, WHITE handwriting */
+.splash-screen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-color: var(--splash-bg);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#flying-logo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    z-index: 10001; /* Strictly above splash-screen */
+    overflow: visible;
+}
+
+/* Metallic bismuth animated gradient applied after splash lands */
+#flying-logo.metallic .svg-text-group {
+    fill: url(#metallic-grad);
+}
+
+@keyframes metallic-shift {
+    0%   { stop-color: #c0a0e0; }
+    15%  { stop-color: #7dd4fc; }
+    30%  { stop-color: #a5f3fc; }
+    45%  { stop-color: #c084fc; }
+    60%  { stop-color: #f0abfc; }
+    75%  { stop-color: #fbbf24; }
+    90%  { stop-color: #86efac; }
+    100% { stop-color: #c0a0e0; }
+}
+
+.metallic-stop-1 { animation: metallic-shift 4s ease infinite; }
+.metallic-stop-2 { animation: metallic-shift 4s ease infinite; animation-delay: -1.3s; }
+.metallic-stop-3 { animation: metallic-shift 4s ease infinite; animation-delay: -2.6s; }
+
+.svg-text-group {
+    font-family: 'Mr Dafoe', cursive;
+    font-size: 150px;
+    fill: #FCFCFC;
+}
+
+.letter {
+    fill: transparent;
+    stroke: #FCFCFC; /* WHITE stroke on black splash bg */
+    stroke-width: 2px;
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+}
+
+.svg-dot {
+    opacity: 0;
+    fill: #FCFCFC; /* White dot on black bg */
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 2.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    z-index: 100;
+    mix-blend-mode: difference;
+    color: #fff;
+    font-family: var(--font-body);
+}
+
+.logo { 
+    display: none; 
+}
+
+.nav-links { 
+    display: flex; 
+    gap: 2.5rem; 
+    font-size: 1rem; 
+    font-weight: 400; 
+    justify-content: flex-end; /* Push to right */
+}
+.nav-link { position: relative; overflow: hidden; }
+
+/* Sections General */
+.section-pad { padding: 10rem 0 8rem 0; }
+.inner-pad { padding: 0 4rem; }
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    position: relative;
+    /* Adding perspective for the scroll distortion */
+    perspective: 1000px;
+}
+
+.hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes logo top, text bottom */
+    padding: 6rem 4rem 10rem 4rem;
+    z-index: 2;
+}
+
+.hero-logo-large {
+    width: clamp(22rem, 35vw, 38rem);
+    aspect-ratio: 1000 / 300;
+    position: relative;
+    z-index: 2;
+    /* Ensure it lines up with the left edge of hero content padding */
+    margin-left: -1rem; /* optical correction for the SVG's natural left whitespace */
+}
+
+.hero-text-block {
+    max-width: 1400px;
+}
+
+.hero-title, .footer-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 6rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 300;
+}
+
+.hero-title .line { display: block; overflow: hidden; padding-bottom: 0.5rem; }
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    max-width: 600px;
+    font-weight: 300;
+}
+
+.scroll-instruction {
+    position: absolute;
+    bottom: 3rem; right: 4rem;
+    display: flex; align-items: center; gap: 1rem;
+    font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;
+    animation: fadeBounce 2s infinite ease-in-out;
+}
+
+@keyframes fadeBounce {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(10px); opacity: 1; }
+}
+
+/* About / All Rounder */
+.section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 3rem;
+}
+
+.massive-text {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 6vw, 7rem);
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    border-top: 1px solid currentColor;
+    padding-top: 3rem;
+    opacity: 0.8;
+}
+
+.skill-item h3 { font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem; }
+
+/* Interactive Skills Section */
+.interactive-skills {
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-row {
+    position: relative;
+    padding: 1rem 0;
+}
+
+.massive-skill-text {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 7vw, 10rem);
+    line-height: 1.1;
+    font-weight: 400;
+    color: var(--text-muted);
+    transition: color 0.4s var(--ease-out);
+    position: relative;
+    z-index: 2;
+    pointer-events: none; /* Let hover hit the row cleanly */
+}
+
+body[data-current-theme="dark"] .skill-row:hover .massive-skill-text {
+    color: var(--text-light); /* Illuminates on hover */
+}
+
+body[data-current-theme="brand"] .skill-row:hover .massive-skill-text,
+body[data-current-theme="accent"] .skill-row:hover .massive-skill-text {
+    color: var(--text-dark); /* Contrast adjust */
+}
+
+.capsules {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.capsule {
+    position: absolute;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    transform: scale(0) translateY(20px);
+    opacity: 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    /* Sexy pop spring transition */
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease-out;
+}
+
+.skill-row:hover .capsule {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* Stagger popping */
+.capsule:nth-child(1) { transition-delay: 0s; }
+.capsule:nth-child(2) { transition-delay: 0.05s; }
+.capsule:nth-child(3) { transition-delay: 0.1s; }
+
+
+/* Split Screen Works */
+/* ---- Works Orbit (yzavoku-style) ---- */
+.works-orbit-section {
+    position: relative;
+    width: 100%;
+    /* We want a long scroll height to allow rotating */
+    height: 400vh;
+    background: #000;
+}
+
+.orbit-sticky-container {
+    position: sticky;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.orbit-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.3; /* Subtle background */
+    transition: opacity 0.5s ease;
+}
+
+.orbit-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, transparent 0%, #000 80%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.orbit-ring-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+/* The rotating container */
+.orbit-ring {
+    position: relative;
+    width: 60vw;
+    height: 60vw;
+    min-width: 600px;
+    min-height: 600px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center center;
+    will-change: transform;
+}
+
+.orbit-item {
+    position: absolute;
+    width: 45px;
+    aspect-ratio: 9/16; /* Proper widescreen landscape thumbnails */
+    background: #222;
+    overflow: hidden;
+    cursor: pointer;
+    transform-origin: center;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    border-radius: 6px; /* Smooth professional edges */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.orbit-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.orbit-item:hover {
+    transform: scale(1.1);
+}
+
+.orbit-item.active {
+    box-shadow: 0 0 0 2px #fff, 0 10px 40px rgba(0,0,0,0.8);
+}
+
+/* Center Label */
+.orbit-center-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    text-align: center;
+    pointer-events: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.orbit-active-num {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+}
+
+.orbit-active-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 4.5rem);
+    white-space: nowrap;
+}
+
+.orbit-scroll-hint {
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Contact / Footer — full screen with massive logo */
+.contact {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+.contact-logo-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.contact-logo-text {
+    font-family: 'Mr Dafoe', cursive;
+    /* Massive size */
+    font-size: clamp(8rem, 25vw, 30rem);
+    color: var(--text-light);
+    line-height: 0.85;
+    white-space: nowrap;
+    text-align: center;
+    user-select: none;
+}
+
+.contact-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 2rem 4rem;
+    gap: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.c-block { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.5rem; 
+    text-decoration: none;
+    color: var(--text-light);
+}
+
+.c-interactive {
+    cursor: pointer;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+.c-interactive:hover { opacity: 1; }
+
+.c-label { font-size: 0.75rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em; }
+.c-val { font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; transition: color 0.3s ease; }
+
+a:hover, .c-interactive:hover .c-label, .c-interactive:hover .c-val, .nav-links a:hover {
+    color: #F8DE7E !important;
+}
+
+
+.contact-copyright {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.75rem;
+    opacity: 0.3;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .orbit-ring {
+        width: 90vw;
+        height: 90vw;
+        min-width: auto;
+        min-height: auto;
+    }
+    .contact-bottom { flex-direction: column; align-items: center; text-align: center; gap: 2rem; }
+    .c-block { align-items: center; text-align: center; }
+}
+
+@media (max-width: 768px) {
+    /* Paddings & Layout */
+    .header { padding: 1.5rem 1.5rem; display: flex; justify-content: flex-end; }
+    .nav-left { display: none; }
+    .inner-pad { padding: 0 1.5rem; }
+    .section-pad { padding: 6rem 0 5rem 0; }
+    .hero-content { padding: 5rem 1.5rem 4rem 1.5rem; }
+    
+    /* Navigation & Cursor */
+    .nav-links { display: none; }
+    .cursor { display: none !important; }
+
+    /* Typography Limits */
+    .hero-logo-large { width: 100%; max-width: 18rem; margin-left: 0; }
+    .hero-title, .footer-title { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+    .hero-subtitle { font-size: 1.25rem; }
+    
+    .massive-text { font-size: clamp(2.2rem, 9vw, 3.5rem); }
+    .massive-skill-text { font-size: clamp(2.5rem, 11vw, 4rem); }
+    
+    .orbit-active-title { font-size: clamp(1.5rem, 6vw, 2.5rem); }
+    .contact-logo-text { font-size: clamp(4rem, 18vw, 8rem); }
+
+    /* Interactive Skills Restructuring */
+    .capsules {
+        position: relative;
+        width: auto; height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        pointer-events: auto;
+    }
+    .capsule {
+        position: static !important;
+    }
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* Jasmine hover */
+a:hover, .c-interactive:hover .c-label, .c-interactive:hover .c-val { color: #f8de7e !important; }
