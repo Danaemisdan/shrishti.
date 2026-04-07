@@ -586,7 +586,7 @@ a:hover, .c-interactive:hover .c-label, .c-interactive:hover .c-val, .nav-links 
     .cursor { display: none !important; }
 
     /* Typography Limits */
-    .hero-logo-large { width: 100%; max-width: 25rem; margin-left: -0.5rem; }
+    .hero-logo-large { width: 100%; max-width: 25rem; transform: translateX(-14%); margin-left: 0; }
     .hero-title, .footer-title { font-size: clamp(2.5rem, 10vw, 3.5rem); }
     .hero-subtitle { font-size: 1.25rem; }
     
