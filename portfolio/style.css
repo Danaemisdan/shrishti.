@@ -145,15 +145,16 @@ a { color: inherit; text-decoration: none; cursor: none; }
 .metallic-stop-3 { animation: metallic-shift 4s ease infinite; animation-delay: -2.6s; }
 
 .svg-text-group {
-    font-family: 'Mr Dafoe', cursive;
-    font-size: 150px;
+    font-family: 'Alex Brush', cursive; /* Extremely elegant, thin sleek cursive */
+    font-size: 190px; /* Alex brush runs slightly smaller, so we boost it */
     fill: #FCFCFC;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.2)); /* Sexy outer glow */
 }
 
 .letter {
     fill: transparent;
-    stroke: #FCFCFC; /* WHITE stroke on black splash bg */
-    stroke-width: 2px;
+    stroke: #FCFCFC; 
+    stroke-width: 1.5px; /* Thinner stroke makes it look more premium and precise */
     stroke-dasharray: 2000;
     stroke-dashoffset: 2000;
 }
@@ -507,7 +508,7 @@ body[data-current-theme="accent"] .skill-row:hover .massive-skill-text {
 }
 
 .contact-logo-text {
-    font-family: 'Mr Dafoe', cursive;
+    font-family: 'Alex Brush', cursive;
     /* Massive size */
     font-size: clamp(8rem, 25vw, 30rem);
     color: var(--text-light);
