@@ -221,8 +221,8 @@ a { color: inherit; text-decoration: none; cursor: none; }
     aspect-ratio: 1000 / 300; /* Mirrors new exact viewBox */
     position: relative;
     z-index: 2;
-    /* Ensure it lines up with the left edge of hero content padding */
-    margin-left: 0; 
+    /* Translate mathematically offsets the internal centered padding of the SVG viewBox! */
+    transform: translateX(-26%); 
 }
 
 .hero-text-block {
