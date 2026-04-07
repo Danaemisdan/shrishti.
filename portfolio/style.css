@@ -116,9 +116,9 @@ a { color: inherit; text-decoration: none; cursor: none; }
 #flying-logo {
     position: fixed;
     top: 50%;
-    left: 45%; /* Shift slightly left so the 5% offset is centered */
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 80vw; /* Increased size on splash */
+    width: 65vw;
     z-index: 10001; /* Strictly above splash-screen */
     overflow: visible;
 }
