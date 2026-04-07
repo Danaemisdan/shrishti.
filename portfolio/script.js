@@ -128,9 +128,16 @@ window.addEventListener("load", () => {
                     const anchor = document.querySelector('.hero-logo-large');
                     
                     gsap.set(logo, { clearProps: "top,left,transform,width" });
+                    
+                    // CRITICAL: Remove the ID to strip away the stylesheet's fixed positioning
+                    // which was causing the layout to push down on mobile!
+                    logo.removeAttribute('id');
                     logo.style.position = 'relative';
                     logo.style.width = '100%';
                     logo.style.height = '100%';
+                    logo.style.top = '0';
+                    logo.style.left = '0';
+                    logo.style.transform = 'none';
                     
                     anchor.appendChild(logo);
                     // Fire metallic bismuth shimmer now that logo is on white bg

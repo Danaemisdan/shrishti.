@@ -357,7 +357,10 @@ body[data-current-theme="accent"] .skill-row:hover .massive-skill-text {
     width: 100%;
     /* We want a long scroll height to allow rotating */
     height: 400vh;
-    background: #000;
+    background: #050505; /* Blackish background */
+    overflow: hidden;
+    color: #fff;
+    font-family: var(--font-body);
 }
 
 .orbit-sticky-container {
@@ -370,25 +373,21 @@ body[data-current-theme="accent"] .skill-row:hover .massive-skill-text {
 
 .orbit-bg-video {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 50%; left: 50%;
+    width: 100vw; height: 100vh;
     object-fit: cover;
+    transform: translate(-50%, -50%);
     z-index: 1;
-    opacity: 0.3; /* Subtle background */
-    transition: opacity 0.5s ease;
+    opacity: 0.6; /* Let background be more prominent */
+    filter: blur(8px) saturate(1.2);
 }
 
 .orbit-bg-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: radial-gradient(circle at center, transparent 0%, #000 80%);
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4); /* Less harsh black layer */
     z-index: 2;
-    pointer-events: none;
 }
 
 .orbit-ring-wrap {
@@ -616,12 +615,12 @@ a:hover, .c-interactive:hover .c-label, .c-interactive:hover .c-val, .nav-links 
     }
 
     .orbit-ring {
-        width: 65vw;
-        height: 65vw;
+        width: 85vw;
+        height: 85vw;
     }
     .orbit-item {
-        width: 60px;
-        height: 85px;
+        width: 40px;
+        height: 55px;
     }
 }
 
