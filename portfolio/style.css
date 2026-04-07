@@ -145,8 +145,8 @@ a { color: inherit; text-decoration: none; cursor: none; }
 .metallic-stop-3 { animation: metallic-shift 4s ease infinite; animation-delay: -2.6s; }
 
 .svg-text-group {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
+    font-family: 'Allura', cursive;
+    font-style: normal;
     font-size: 190px; /* Kept massive for the dramatic splash screen effect */
     fill: #FCFCFC;
     filter: drop-shadow(0 0 12px rgba(255,255,255,0.2)); /* Sexy outer glow */
@@ -509,8 +509,8 @@ body[data-current-theme="accent"] .skill-row:hover .massive-skill-text {
 }
 
 .contact-logo-text {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
+    font-family: 'Allura', cursive;
+    font-style: normal;
     /* Massive size */
     font-size: clamp(8rem, 25vw, 30rem);
     color: var(--text-light);
