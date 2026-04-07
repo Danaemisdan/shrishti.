@@ -116,9 +116,9 @@ a { color: inherit; text-decoration: none; cursor: none; }
 #flying-logo {
     position: fixed;
     top: 50%;
-    left: 50%;
+    left: 45%; /* Shift slightly left so the 5% offset is centered */
     transform: translate(-50%, -50%);
-    width: 60vw;
+    width: 80vw; /* Increased size on splash */
     z-index: 10001; /* Strictly above splash-screen */
     overflow: visible;
 }
@@ -215,12 +215,12 @@ a { color: inherit; text-decoration: none; cursor: none; }
 }
 
 .hero-logo-large {
-    width: clamp(22rem, 35vw, 38rem);
-    aspect-ratio: 1000 / 300;
+    width: clamp(25rem, 50vw, 42rem); /* Increased size here as well */
+    aspect-ratio: 800 / 300; /* Mirrors new SVG dimensions */
     position: relative;
     z-index: 2;
     /* Ensure it lines up with the left edge of hero content padding */
-    margin-left: -1rem; /* optical correction for the SVG's natural left whitespace */
+    margin-left: 0; 
 }
 
 .hero-text-block {
@@ -561,10 +561,14 @@ a:hover, .c-interactive:hover .c-label, .c-interactive:hover .c-val, .nav-links 
 /* Responsive */
 @media (max-width: 1024px) {
     .orbit-ring {
-        width: 90vw;
-        height: 90vw;
+        width: 85vw;
+        height: 85vw;
         min-width: auto;
         min-height: auto;
+    }
+    .orbit-item {
+        width: 100px;
+        height: 140px;
     }
     .contact-bottom { flex-direction: column; align-items: center; text-align: center; gap: 2rem; }
     .c-block { align-items: center; text-align: center; }
@@ -583,7 +587,7 @@ a:hover, .c-interactive:hover .c-label, .c-interactive:hover .c-val, .nav-links 
     .cursor { display: none !important; }
 
     /* Typography Limits */
-    .hero-logo-large { width: 100%; max-width: 18rem; margin-left: 0; }
+    .hero-logo-large { width: 100%; max-width: 25rem; margin-left: -0.5rem; }
     .hero-title, .footer-title { font-size: clamp(2.5rem, 10vw, 3.5rem); }
     .hero-subtitle { font-size: 1.25rem; }
     
@@ -609,6 +613,15 @@ a:hover, .c-interactive:hover .c-label, .c-interactive:hover .c-val, .nav-links 
     .skills-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+
+    .orbit-ring {
+        width: 65vw;
+        height: 65vw;
+    }
+    .orbit-item {
+        width: 60px;
+        height: 85px;
     }
 }
 
