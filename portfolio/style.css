@@ -33,7 +33,7 @@ body {
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.5;
-    overflow-x: hidden;
+    overflow-x: clip; /* clip preserves position: sticky natively, hidden breaks it! */
     cursor: none;
     transition: background-color 0.8s ease, color 0.8s ease;
 }
@@ -118,7 +118,8 @@ a { color: inherit; text-decoration: none; cursor: none; }
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 65vw;
+    width: 95vw;
+    max-width: 700px;
     z-index: 10001; /* Strictly above splash-screen */
     overflow: visible;
 }
@@ -209,14 +210,15 @@ a { color: inherit; text-decoration: none; cursor: none; }
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Pushes logo top, text bottom */
+    justify-content: center; /* Bind them in the middle of the screen */
+    gap: 2rem; /* Comfortable separation instead of blasting across the screen */
     padding: 6rem 4rem 10rem 4rem;
     z-index: 2;
 }
 
 .hero-logo-large {
-    width: clamp(25rem, 50vw, 42rem); /* Increased size here as well */
-    aspect-ratio: 800 / 300; /* Mirrors new SVG dimensions */
+    width: clamp(25rem, 95vw, 42rem); /* Massive on mobile, capped at 42rem on desktop */
+    aspect-ratio: 1000 / 300; /* Mirrors new exact viewBox */
     position: relative;
     z-index: 2;
     /* Ensure it lines up with the left edge of hero content padding */
@@ -350,15 +352,13 @@ body[data-current-theme="accent"] .skill-row:hover .massive-skill-text {
 .capsule:nth-child(3) { transition-delay: 0.1s; }
 
 
-/* Split Screen Works */
-/* ---- Works Orbit (yzavoku-style) ---- */
+/* 4. Works Orbit */
 .works-orbit-section {
     position: relative;
     width: 100%;
     /* We want a long scroll height to allow rotating */
     height: 400vh;
     background: #050505; /* Blackish background */
-    overflow: hidden;
     color: #fff;
     font-family: var(--font-body);
 }
@@ -366,9 +366,9 @@ body[data-current-theme="accent"] .skill-row:hover .massive-skill-text {
 .orbit-sticky-container {
     position: sticky;
     top: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; /* Trap overflow HERE to avoid breaking sticky behaviour natively! */
 }
 
 .orbit-bg-video {
@@ -619,8 +619,8 @@ a:hover, .c-interactive:hover .c-label, .c-interactive:hover .c-val, .nav-links 
         height: 85vw;
     }
     .orbit-item {
-        width: 40px;
-        height: 55px;
+        width: 32px;
+        height: 45px;
     }
 }
 
